@@ -24,22 +24,22 @@ public class HomeworkTests {
         $("#firstName").setValue("Big");
         $("#lastName").setValue("Lebovski");
         $("#userEmail").setValue("Lebovski@gmail.com");
-        $("[for=\"gender-radio-3\"]").click();
+        $("[for=gender-radio-3]").click(); // or $("gender-radio-3").parent().click;
         $("#userNumber").setValue("9887987687");
         $("#uploadPicture").uploadFromClasspath("test_file.png");
         $("#currentAddress").setValue("Adress Big");
         $("#react-select-3-input").setValue("Har").pressEnter();
         $("#react-select-4-input").setValue("Kar").pressEnter();
         $("#subjectsInput").setValue("Arts").pressEnter().setValue("English").pressEnter();
-        $("[for=\"hobbies-checkbox-1\"]").click();
-        $("[for=\"hobbies-checkbox-2\"]").click();
-        $("[for=\"hobbies-checkbox-3\"]").click();
+        $("[for=hobbies-checkbox-1]").click();
+        $("[for=hobbies-checkbox-2]").click();
+        $("[for=hobbies-checkbox-3]").click();
 
         //Fill date
         $("#dateOfBirthInput").click();
-        $("[class*=\"year-select\"]").selectOptionByValue("1996");
-        $("[class*=\"month-select\"]").selectOptionByValue("3");
-        $("[class*=\"021\"]").click();
+        $("[class*='year-select']").selectOptionByValue("1996");
+        $("[class*='month-select']").selectOptionByValue("3");
+        $("[class*='21']").click(); // ставим кавычки если локатор имеет пробелы
 
         // Click to submit
         $("#submit").scrollTo().click();
