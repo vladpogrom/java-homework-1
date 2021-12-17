@@ -1,18 +1,15 @@
 package vladpogrom;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.FileDownloadMode;
-import com.codeborne.selenide.impl.DownloadFileWithHttpRequest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-
-import java.io.File;
-
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class HomeworkTests {
 
@@ -22,36 +19,52 @@ public class HomeworkTests {
     }
 
     @Test
-    void successTest() {
+    void fillForm() {
+        //Open form
         open("https://demoqa.com/automation-practice-form");
+
+        //Fill easy forms
         $("#firstName").setValue("Big");
         $("#lastName").setValue("Lebovski");
         $("#userEmail").setValue("Lebovski@gmail.com");
         $("[for=\"gender-radio-3\"]").click();
         $("#userNumber").setValue("9887987687");
-//        $("#dateOfBirthInput");
+        $("#subjectsInput").setValue("Arts").pressEnter().setValue("English").pressEnter().pressEnter();
+        $("#uploadPicture").uploadFromClasspath("test_file.png");
+        $("#currentAddress").setValue("Adress Big");
+        $("#react-select-3-input").setValue("Haryana").pressEnter();
+        $("#react-select-4-input").setValue("Karnal").pressEnter();
+
+        //Run cycle for filling checkboxes todo
         $("[for=\"hobbies-checkbox-1\"]").click();
         $("[for=\"hobbies-checkbox-2\"]").click();
         $("[for=\"hobbies-checkbox-3\"]").click();
-        $("#uploadPicture").uploadFromClasspath("test_file.png");
-        $("#currentAddress").setValue("Adress Big");
-        $("#state").scrollTo().click();
-        $(By.xpath("//div[contains(text(),'Haryana')]")).click();
-        $("#city").scrollTo().click();
-        $(By.xpath("//div[contains(text(),'Karnal')]")).click();
+
+        //Fill date
+//        $("#dateOfBirthInput"); todo
+
         $("#submit").scrollTo().click();
 
-        $("#example-modal-sizes-title-lg").shouldBe(visible).shouldHave(text("Thanks for submitting the form"));
-        $(By.xpath("//td[contains(text(),'Big Lebovski')]")).shouldHave(text("Big Lebovski"));
-        $(By.xpath("//td[contains(text(),'Lebovski@gmail.com')]")).shouldHave(text("Lebovski@gmail.com"));
-        $(By.xpath("//td[contains(text(),'Other')]")).shouldHave(text("Other"));
-        $(By.xpath("//td[contains(text(),'9887987687')]")).shouldHave(text("9887987687"));
-        //        $("#dateOfBirthInput");
-        $(By.xpath("//td[contains(text(),'Sports, Reading, Music')]")).shouldHave(text("Sports, Reading, Music"));
-        $(By.xpath("//td[contains(text(),'test_file.png')]")).shouldHave(text("test_file.png"));
-        $(By.xpath("//td[contains(text(),'Adress Big')]")).shouldHave(text("Adress Big"));
-        $(By.xpath("//td[contains(text(),'Haryana Karnal')]")).shouldHave(text("Haryana Karnal"));
-        $("#closeLargeModal").scrollIntoView(false).click();
+        // Run check form
+        checkForm();
+    }
 
+    void checkForm() {
+        //Check visible of form
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+
+        //Asserts
+        $(byText("Big Lebovski")).should(appear);
+        $(byText("Lebovski@gmail.com")).should(appear);
+        $(byText("Other")).should(appear);
+        $(byText("9887987687")).should(appear);
+//        $(byText("21 April,1996")).should(appear);
+        $(byText("Sports, Reading, Music")).should(appear);
+        $(byText("test_file.png")).should(appear);
+        $(byText("Adress Big")).should(appear);
+        $(byText("Haryana Karnal")).should(appear);
+
+        //Close form
+        $("#closeLargeModal").scrollIntoView(false).click();
     }
 }
