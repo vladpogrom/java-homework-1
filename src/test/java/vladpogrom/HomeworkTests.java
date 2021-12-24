@@ -24,9 +24,9 @@ public class HomeworkTests {
         $("#firstName").setValue("Big");
         $("#lastName").setValue("Lebovski");
         $("#userEmail").setValue("Lebovski@gmail.com");
-        $("[for=gender-radio-3]").click(); // or $("gender-radio-3").parent().click;
+        $("#gender-radio-3").parent().click(); // кликаем по элементу родителя, интересно
         $("#userNumber").setValue("9887987687");
-        $("#uploadPicture").uploadFromClasspath("test_file.png");
+        $("#uploadPicture").uploadFromClasspath("img/test_file.png"); // самый правильный метод для загрузки файлов
         $("#currentAddress").setValue("Adress Big");
         $("#react-select-3-input").setValue("Har").pressEnter();
         $("#react-select-4-input").setValue("Kar").pressEnter();
