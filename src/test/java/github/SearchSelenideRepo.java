@@ -14,11 +14,14 @@ public class SearchSelenideRepo {
         open("https://github.com/");
         // ввести в поле поиска selenide и нажать Enter
         $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
-        // нажимаем на линк от первого результата поиска
+        // пример поиска через xpath
+        $x("");
+        // нажимаем на линк от первого результата поиска, после локатора списка надо указать первый элемент (li)
         $$("ul.repo-list li").first().$("a").click();
         // check: в заголовке встречается selenide/selenide
         $("h1").shouldHave(text("selenide / selenide"));
-
         webdriver().shouldHave(url("saf"));
+        // задать время пока браузер остается открыт (5 сек)
+        sleep(5000);
     }
 }

@@ -4,15 +4,13 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class HomeworkTests {
 
     @BeforeEach
-    void openForm(){
+    void openForm() {
         clearBrowserCookies();
         Configuration.browserSize = "1920x1080";
         open("https://demoqa.com/automation-practice-form");
@@ -44,24 +42,20 @@ public class HomeworkTests {
         // Click to submit
         $("#submit").scrollTo().click();
 
-        // Run check form
-        checkForm();
-    }
-
-    void checkForm() {
         //Check visible of form
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 
         //Asserts
-        $(byText("Big Lebovski")).should(appear);
-        $(byText("Lebovski@gmail.com")).should(appear);
-        $(byText("Other")).should(appear);
-        $(byText("9887987687")).should(appear);
-        $(byText("21 April,1996")).should(appear);
-        $(byText("Sports, Reading, Music")).should(appear);
-        $(byText("test_file.png")).should(appear);
-        $(byText("Adress Big")).should(appear);
-        $(byText("Haryana Karnal")).should(appear);
+        $("[class=table-responsive]").shouldHave(
+                text("Big Lebovski"),
+                text("Lebovski@gmail.com"),
+                text("Other"),
+                text("9887987687"),
+                text("21 April,1996"),
+                text("Sports, Reading, Music"),
+                text("test_file.png"),
+                text("Adress Big"),
+                text("Haryana Karnal"));
 
         //Close form
         $("#closeLargeModal").scrollIntoView(false).click();
