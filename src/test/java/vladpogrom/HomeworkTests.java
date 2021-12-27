@@ -37,7 +37,7 @@ public class HomeworkTests {
         $("#dateOfBirthInput").click();
         $("[class*='year-select']").selectOptionByValue("1996");
         $("[class*='month-select']").selectOptionByValue("3");
-        $("[class*='21']").click(); // ставим кавычки если локатор имеет пробелы
+        $$("[role=option]").findBy(text("21")).click();
 
         // Click to submit
         $("#submit").scrollTo().click();

@@ -30,8 +30,8 @@ public class JavaSnippets {
         Selenide.confirm(); // OK in alert dialogs
         Selenide.dismiss(); // Cancel in alert dialogs
 
-        Selenide.closeWindow(); // close active tab
-        Selenide.closeWebDriver(); // close browser completely
+        Selenide.closeWindow(); // закрое активное окно
+        Selenide.closeWebDriver(); // закроет все окна
 
         Selenide.switchTo().frame("new");
         Selenide.switchTo().defaultContent();
@@ -41,21 +41,21 @@ public class JavaSnippets {
 
     void selectors_examples() {
         $("div").click();
-        element("div").click();
+        element("div").click(); // для котлина
 
-        $("div", 2).click(); // the third div
+        $("div", 2).click(); // the third div, начинается с 0 отсчет
 
-        $x("//h1/div").click();
+        $x("//h1/div").click(); // предпочтительно и в ф12 также можно искать
         $(byXpath("//h1/div")).click();
 
-        $(byText("full text")).click();
-        $(withText("ull tex")).click();
+        $(byText("full text")).click(); // полное совпадение текста
+        $(withText("ull tex")).click(); // частичное совпадение
 
         $("").parent();
-        $("").sibling(1);
-        $("").preceding(1);
-        $("").closest("div");
-        $("").ancestor("div"); // the same as closest
+        $("").sibling(1); // ищет соседей вниз, начиная с 0 (не внутри а именно соседей)
+        $("").preceding(1); // ищет соседей вверх, начиная с 0 (не внутри а именно соседей)
+        $("").closest("[data-testid]");
+        $("").ancestor("div"); // the same as closest, synonyms
         $("div:last-child");
 
 
@@ -77,11 +77,11 @@ public class JavaSnippets {
         $("").doubleClick();
         $("").contextClick();
 
-        $("").hover();
+        $("").hover(); // подносит курсор
 
-        $("").setValue("text");
-        $("").append("text");
-        $("").clear();
+        $("").setValue("text"); // вставляет текст с удалением того что был до этого
+        $("").append("text"); // добавляет текст
+        $("").clear(); // очищает поле
         $("").setValue(""); // clear
 
 
@@ -156,8 +156,8 @@ public class JavaSnippets {
         $$("div"); // does nothing!
 
         // selections
-        $$("div").filterBy(text("123")).shouldHave(size(1));
-        $$("div").excludeWith(text("123")).shouldHave(size(1));
+        $$("div").filterBy(text("123")).shouldHave(size(1)); // находит все div в которых есть "123"
+        $$("div").excludeWith(text("123")).shouldHave(size(1)); // находит все div в которых НЕТ "123"
 
         $$("div").first().click();
         elements("div").first().click();
@@ -171,10 +171,10 @@ public class JavaSnippets {
         $$("").shouldHave(size(0));
         $$("").shouldBe(CollectionCondition.empty); // the same
 
-        $$("").shouldHave(texts("Alfa", "Beta", "Gamma"));
-        $$("").shouldHave(exactTexts("Alfa", "Beta", "Gamma"));
+        $$("").shouldHave(texts("Alfa", "Beta", "Gamma")); // просто текст
+        $$("").shouldHave(exactTexts("Alfa", "Beta", "Gamma")); // полный текст
 
-        $$("").shouldHave(textsInAnyOrder("Beta", "Gamma", "Alfa"));
+        $$("").shouldHave(textsInAnyOrder("Beta", "Gamma", "Alfa")); // если не важен порядок
         $$("").shouldHave(exactTextsCaseSensitiveInAnyOrder("Beta", "Gamma", "Alfa"));
 
         $$("").shouldHave(itemWithText("Gamma")); // only one text
