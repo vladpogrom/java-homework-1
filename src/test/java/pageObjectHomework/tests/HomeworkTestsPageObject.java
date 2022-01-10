@@ -8,15 +8,13 @@ public class HomeworkTestsPageObject extends TestBase {
     void fillForm() {
         // Open page
         registrationPage.openPage();
-
-        // Fill form (с календарем надо более универсальный метод, т.к месяц может бьть 02, а день 31
+        registrationPage.calendarComponent.setDate(data.userDateDay, data.userDateMonth, data.userDateYear);
         registrationPage.uploadComponent.UploadFile(data.userPicture);
-        registrationPage.calendarComponent.setDate(data.userDateDay,data.userDateMonth,data.userDateYear);
         registrationPage
                 .typeFirstName(data.firstName)
                 .typeLastName(data.lastName)
                 .typeEmail(data.userEmail)
-                .setGender()
+                .setGender(data.genderType)
                 .typeUserNumber(data.userNumber)
                 .typeCurrentAdress(data.userAdress)
                 .typeSubjects(data.subjects)
@@ -24,7 +22,7 @@ public class HomeworkTestsPageObject extends TestBase {
                 .typeCity(data.userCity)
                 .typeHobbies(data.hobbies);
 
-        // Submit to asserts form
+        // Submit to assert form
         registrationPage.submitClick()
                         .checkVisibleOfSubmitForm();
 
@@ -35,11 +33,11 @@ public class HomeworkTestsPageObject extends TestBase {
                 .checkResultValue(String.join(", ", data.subjects))
                 .checkResultValue(String.join(", ", data.hobbies))
                 .checkResultValue(data.userNumber)
-                .checkResultValue((data.userDateDay) + " " + (registrationPage.calendarComponent.getMonth(data.userDateMonth)) + "," + (data.userDateYear))
                 .checkResultValue(data.userPicture.substring(4))
                 .checkResultValue(data.userAdress)
                 .checkResultValue(data.userState + " " + data.userCity)
-                .checkResultValue(data.genders[data.genderType]);
+                .checkResultValue(data.genderType)
+                .checkResultValue((data.userDateDay) + " " + (data.userDateMonthAssert) + "," + (data.userDateYear));
 
         // Close form
         registrationPage.closeForm();

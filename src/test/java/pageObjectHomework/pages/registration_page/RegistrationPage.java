@@ -15,8 +15,10 @@ public class RegistrationPage {
 
     public CalendarComponent calendarComponent = new CalendarComponent();
     public UploadComponent uploadComponent = new UploadComponent();
-    TestData data = new TestData();
-    public SelenideElement genderLocator = $("#gender-radio-" + (data.genderType+1)).parent();
+    static TestData data = new TestData();
+
+    // Locators
+    static SelenideElement genderLocator = $("#genterWrapper");
     static SelenideElement firstNameLocator = $("#firstName");
     static SelenideElement lastNameLocator = $("#lastName");
     static SelenideElement userEmailLocator = $("#userEmail");
@@ -64,8 +66,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setGender() {
-        genderLocator.click();
+    public RegistrationPage setGender(String value) {
+        genderLocator.$(byText(value)).click();
         return this;
     }
 

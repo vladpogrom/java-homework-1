@@ -35,7 +35,7 @@ public class HomeworkTests {
 
         //Fill date
         $("#dateOfBirthInput").click();
-        $("[class*='year-select']").selectOptionByValue("1996");
+        $("[class*='userDateYear-select']").selectOptionByValue("1996");
         $("[class*='month-select']").selectOptionByValue("3");
         $$("[role=option]").findBy(text("21")).click();
 
