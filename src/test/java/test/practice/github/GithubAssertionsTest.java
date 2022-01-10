@@ -1,4 +1,4 @@
-package github;
+package test.practice.github;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
@@ -18,7 +18,7 @@ public class GithubAssertionsTest {
 
     @Test
     void softAssertions() {
-        // открыть страницу github.com/selenide/selenide
+        // открыть страницу test.practice.github.com/selenide/selenide
         open("/selenide/selenide");
 
         // перейти в раздел wiki

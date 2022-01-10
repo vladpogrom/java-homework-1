@@ -1,9 +1,8 @@
-package github;
+package test.practice.github;
 
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
@@ -11,7 +10,7 @@ public class SearchSelenideRepo {
 
     @Test
     void shouldFindSelenideRepositoryInGithub(){
-        // открыть страницу github.com
+        // открыть страницу test.practice.github.com
         open("https://github.com/");
         // ввести в поле поиска selenide и нажать Enter
         $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();

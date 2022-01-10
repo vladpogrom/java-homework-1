@@ -1,4 +1,4 @@
-package vladpogrom;
+package test.practice;
 
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;

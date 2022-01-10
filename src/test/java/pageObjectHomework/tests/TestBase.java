@@ -1,12 +1,14 @@
-package guru.qa.tests;
+package pageObjectHomework.tests;
 
 import com.codeborne.selenide.Configuration;
-import guru.qa.pages.RegistrationPage;
+import pageObjectHomework.pages.registration_page.RegistrationPage;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData data = new TestData();
+    public static String URL = "/automation-practice-form";
 
     @BeforeAll
     static void setUp() {

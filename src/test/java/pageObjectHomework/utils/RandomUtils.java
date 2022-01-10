@@ -1,4 +1,4 @@
-package guru.qa.utils;
+package pageObjectHomework.utils;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -28,7 +28,7 @@ public class RandomUtils {
     }
 
     public static String getRandomPhone() {
-        return getRandomLong(11111111111111111L, 99999999999999999L) + "";
+        return getRandomLong(11111111L, 99999999L) + "";
     }
 
     public static String getRandomPhone(String code) {
