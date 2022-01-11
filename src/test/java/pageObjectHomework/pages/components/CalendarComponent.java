@@ -10,14 +10,14 @@ public class CalendarComponent {
 
     static SelenideElement dateInputLocator = $("#dateOfBirthInput");
     static SelenideElement yearSelectLocator = $("[class*='year-select']");
-    static SelenideElement monthSelectLocator = $("[class*='month-select']");
+    public static SelenideElement monthSelectLocator = $("[class*='month-select']");
     static ElementsCollection daySelectLocator = $$("[role=option]");
 
-    public void setDate(String day, int month, String year) {
+    public void setDate(int day, int month, String year) {
         dateInputLocator.click();
         yearSelectLocator.selectOptionByValue(year);
         monthSelectLocator.selectOptionByValue(String.valueOf(month-1));
-        daySelectLocator.findBy(text(day)).click();
+        daySelectLocator.findBy(text(String.valueOf(day))).click();
     }
 }
 

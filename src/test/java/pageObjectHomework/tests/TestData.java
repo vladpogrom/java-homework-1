@@ -16,7 +16,7 @@ public class TestData {
     String userCity = "Karnal";
     String userState = "Haryana";
     String userPicture = "img/test_file.png";
-    String userDateDay = DataComponent.day;
+    int userDateDay = DataComponent.day;
     int userDateMonth = DataComponent.month;
     String userDateYear = DataComponent.year;
     String userDateMonthAssert = DataComponent.userMonthAssert;

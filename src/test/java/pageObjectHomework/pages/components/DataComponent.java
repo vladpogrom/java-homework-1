@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import static java.lang.Integer.parseInt;
+
 public class DataComponent {
     // It's okay
-    public static String day;
+    public static int day;
     public static int month;
     public static String year;
     static Random rnd;
@@ -30,8 +32,8 @@ public class DataComponent {
         pattern = "dd/MM/yyyy";
         Format formatter = new SimpleDateFormat(pattern);
         parseDate = formatter.format(dt);
-        day = parseDate.substring(0,2);
-        month = Integer.parseInt(parseDate.substring(3,5));
+        day = parseInt(parseDate.substring(0,2));
+        month = parseInt(parseDate.substring(3,5));
         year = parseDate.substring(6,10);
 
         // Pattern for assert (month)
