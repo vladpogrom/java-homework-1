@@ -7,19 +7,20 @@ import static pageObjectHomework.utils.RandomUtils.getRandomPhone;
 
 public class TestData {
     static Faker faker = new Faker();
-    String genderType = "Male";
-    String firstName = faker.name().firstName();
-    String lastName = faker.name().lastName();
-    String userEmail = getRandomEmail();
-    String userNumber = getRandomPhone(String.valueOf(79));
-    String userAdress = faker.address().fullAddress();
-    String userCity = "Karnal";
-    String userState = "Haryana";
-    String userPicture = "img/test_file.png";
-    int userDateDay = DataComponent.day;
-    int userDateMonth = DataComponent.month;
-    String userDateYear = DataComponent.year;
-    String userDateMonthAssert = DataComponent.userMonthAssert;
+    public String genderType = "Male";
+    public String firstName = faker.name().firstName();
+    public String lastName = faker.name().lastName();
+    public String userEmail = getRandomEmail();
+    public String userNumber = getRandomPhone(String.valueOf(79));
+    public String userAdress = faker.address().fullAddress();
+    public String userCity = "Karnal";
+    public String userState = "Haryana";
+    public String userPicture = "img/test_file.png";
+    public String openPageTextAssert = "Student Registration Form";
+    public int userDateDay = DataComponent.day;
+    public int userDateMonth = DataComponent.month;
+    public String userDateYear = DataComponent.year;
+    public String userDateMonthAssert = DataComponent.userMonthAssert;
     public String submitFormText = "Thanks for submitting the form";
     public String[] genders = {"Male", "Female", "Other"},
             subjects = {"Chemistry", "Arts", "English", "Commerce"},

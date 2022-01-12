@@ -32,9 +32,9 @@ public class DataComponent {
         pattern = "dd/MM/yyyy";
         Format formatter = new SimpleDateFormat(pattern);
         parseDate = formatter.format(dt);
-        day = parseInt(parseDate.substring(0,2));
-        month = parseInt(parseDate.substring(3,5));
-        year = parseDate.substring(6,10);
+        day = parseInt(parseDate.substring(0, 2));
+        month = parseInt(parseDate.substring(3, 5));
+        year = parseDate.substring(6, 10);
 
         // Pattern for assert (month)
         assertPattern = "dd/MMMM/yyyy";

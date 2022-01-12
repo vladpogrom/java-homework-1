@@ -7,37 +7,37 @@ public class HomeworkTestsPageObject extends TestBase {
     @Test
     void fillForm() {
         // Open page
-        registrationPage.openPage();
+        registrationPage.openForm();
         registrationPage.calendarComponent.setDate(data.userDateDay, data.userDateMonth, data.userDateYear);
         registrationPage.uploadComponent.UploadFile(data.userPicture);
         registrationPage
-                .typeFirstName(data.firstName)
-                .typeLastName(data.lastName)
-                .typeEmail(data.userEmail)
+                .typeMethod(registrationPage.firstNameLocator, data.firstName)
+                .typeMethod(registrationPage.lastNameLocator, data.lastName)
+                .typeMethod(registrationPage.userEmailLocator, data.userEmail)
                 .setGender(data.genderType)
-                .typeUserNumber(data.userNumber)
-                .typeCurrentAdress(data.userAdress)
-                .typeSubjects(data.subjects)
-                .typeState(data.userState)
-                .typeCity(data.userCity)
-                .typeHobbies(data.hobbies);
+                .typeMethod(registrationPage.userNumberLocator, data.userNumber)
+                .typeMethod(registrationPage.currentAdressLocator, data.userAdress)
+                .typeStateAndCity(registrationPage.selectStateLocator, data.userState)
+                .typeStateAndCity(registrationPage.selectCityLocator, data.userCity)
+                .typeSubjects(registrationPage.subjectsInputLocator, data.subjects)
+                .typeHobbies(registrationPage.hobbyCheckboxLocator, data.hobbies);
 
         // Submit to assert form
         registrationPage.submitClick()
-                        .checkVisibleOfSubmitForm();
+                .checkResultValue(registrationPage.submitFormLocator, data.submitFormText);
 
         //Asserts
         registrationPage
-                .checkResultValue(data.firstName + " " + data.lastName)
-                .checkResultValue(data.userEmail)
-                .checkResultValue(String.join(", ", data.subjects))
-                .checkResultValue(String.join(", ", data.hobbies))
-                .checkResultValue(data.userNumber)
-                .checkResultValue(data.userPicture.substring(4))
-                .checkResultValue(data.userAdress)
-                .checkResultValue(data.userState + " " + data.userCity)
-                .checkResultValue(data.genderType)
-                .checkResultValue((data.userDateDay) + " " + (data.userDateMonthAssert) + "," + (data.userDateYear));
+                .textCheckResultValue(data.firstName + " " + data.lastName)
+                .textCheckResultValue(data.userEmail)
+                .textCheckResultValue(String.join(", ", data.subjects))
+                .textCheckResultValue(String.join(", ", data.hobbies))
+                .textCheckResultValue(data.userNumber)
+                .textCheckResultValue(data.userPicture.substring(4))
+                .textCheckResultValue(data.userAdress)
+                .textCheckResultValue(data.userState + " " + data.userCity)
+                .textCheckResultValue(data.genderType)
+                .textCheckResultValue((data.userDateDay) + " " + (data.userDateMonthAssert) + "," + (data.userDateYear));
 
         // Close form
         registrationPage.closeForm();

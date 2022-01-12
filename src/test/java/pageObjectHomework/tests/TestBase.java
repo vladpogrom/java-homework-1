@@ -7,11 +7,11 @@ import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
 
-    static DataComponent dataComponent = new DataComponent();
-    RegistrationPage registrationPage = new RegistrationPage();
-    TestData data = new TestData();
+    public static DataComponent dataComponent = new DataComponent();
+    public static RegistrationPage registrationPage = new RegistrationPage();
+    public TestData data = new TestData();
 
-    public static String URL = "/automation-practice-form";
+    public static String URL = "https://demoqa.com/automation-practice-form";
 
     @BeforeAll
     static void setUp() {

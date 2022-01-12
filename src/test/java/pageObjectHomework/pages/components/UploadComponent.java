@@ -1,10 +1,10 @@
 package pageObjectHomework.pages.components;
 
-import pageObjectHomework.pages.registration_page.RegistrationPage;
+import static pageObjectHomework.tests.TestBase.registrationPage;
 
 public class UploadComponent {
-    public void UploadFile(String path) {
 
-        RegistrationPage.uploadPictureLocator.uploadFromClasspath(path);
+    public void UploadFile(String path) {
+        registrationPage.uploadPictureLocator.uploadFromClasspath(path);
     }
 }
