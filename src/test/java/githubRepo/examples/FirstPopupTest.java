@@ -1,4 +1,4 @@
-package githubRepo.tests;
+package githubRepo.examples;
 
 import org.junit.jupiter.api.Test;
 
