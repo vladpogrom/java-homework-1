@@ -1,25 +1,28 @@
 package test.practice;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Owner;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import pageObjectHomework.tests.TestBase;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("Тесты для формы")
 public class HomeworkTestsPageObjectWithAllure extends TestBase {
 
     @BeforeAll
     public static void setUp() {
+        dataComponent.dataComponentSet();
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://demoqa.com";
         registrationPage.openForm();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
+    @Order(1)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем, что форма открыта")
@@ -29,6 +32,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         );
     }
 
+    @Order(2)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем инпут user firstname")
@@ -36,6 +40,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.typeMethod(registrationPage.firstNameLocator, data.firstName);
     }
 
+    @Order(3)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем инпут user lastname")
@@ -43,6 +48,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.typeMethod(registrationPage.lastNameLocator, data.lastName);
     }
 
+    @Order(4)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем инпут user email")
@@ -50,6 +56,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.typeMethod(registrationPage.userEmailLocator, data.userEmail);
     }
 
+    @Order(5)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем радиселект user gender")
@@ -57,6 +64,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.setGender(data.genderType);
     }
 
+    @Order(6)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем инпут user number")
@@ -64,6 +72,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.typeMethod(registrationPage.userNumberLocator, data.userNumber);
     }
 
+    @Order(1)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем инпут user number")
@@ -73,20 +82,23 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         );
     }
 
+    @Order(7)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем мультиинпут для subjects")
     public void typeMultipleInputSubjects() {
-        registrationPage.typeHobbies(registrationPage.subjectsInputLocator, data.subjects);
+        registrationPage.typeSubjects(registrationPage.subjectsInputLocator, data.subjects);
     }
 
+    @Order(8)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем мультиинпут для hobbies")
     public void typeMultipleInputHobbies() {
-        registrationPage.typeSubjects(registrationPage.hobbyCheckboxLocator, data.hobbies);
+        registrationPage.typeHobbies(registrationPage.hobbyCheckboxLocator, data.hobbies);
     }
 
+    @Order(9)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Загружаем картинку юзера")
@@ -94,6 +106,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.uploadComponent.UploadFile(data.userPicture);
     }
 
+    @Order(10)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем инпут user adress")
@@ -101,6 +114,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.typeMethod(registrationPage.currentAdressLocator, data.userAdress);
     }
 
+    @Order(11)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем селект для user state")
@@ -108,6 +122,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.typeStateAndCity(registrationPage.selectStateLocator, data.userState);
     }
 
+    @Order(12)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Заполняем селект для user city")
@@ -115,6 +130,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.typeStateAndCity(registrationPage.selectCityLocator, data.userCity);
     }
 
+    @Order(13)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Нажмаем сабмит для открытия формы проверки")
@@ -122,6 +138,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.submitClick();
     }
 
+    @Order(14)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем, что форма проверки открыта")
@@ -129,6 +146,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.checkResultValue(registrationPage.submitFormLocator, data.submitFormText);
     }
 
+    @Order(15)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие firstname lastname")
@@ -136,6 +154,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(data.firstName + " " + data.lastName);
     }
 
+    @Order(16)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие email")
@@ -143,6 +162,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(data.userEmail);
     }
 
+    @Order(17)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие user number")
@@ -150,6 +170,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(data.userNumber);
     }
 
+    @Order(18)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие user adress")
@@ -157,6 +178,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(data.userAdress);
     }
 
+    @Order(19)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие gender type")
@@ -164,6 +186,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(data.genderType);
     }
 
+    @Order(20)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие state and city")
@@ -171,6 +194,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(data.userState + " " + data.userCity);
     }
 
+    @Order(21)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие user picture")
@@ -178,6 +202,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(data.userPicture.substring(4));
     }
 
+    @Order(22)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие user date of birth")
@@ -187,6 +212,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         );
     }
 
+    @Order(23)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие user subjects")
@@ -194,6 +220,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(String.join(", ", data.subjects));
     }
 
+    @Order(24)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем наличие user hobbies")
@@ -201,6 +228,7 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.textCheckResultValue(String.join(", ", data.hobbies));
     }
 
+    @Order(25)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Закрываем форму")
@@ -208,11 +236,12 @@ public class HomeworkTestsPageObjectWithAllure extends TestBase {
         registrationPage.closeForm();
     }
 
+    @Order(26)
     @Test
     @Owner(value = "vladpogrom")
     @DisplayName("Проверяем, что форма закрыта")
     public void isCloseFormClosedWithAssert() {
-        assertFalse(registrationPage.isCloseFormClosed(registrationPage.closeFormLocator));
+        assertTrue(registrationPage.isCloseFormClosed(registrationPage.closeFormLocator));
     }
 
     @AfterEach

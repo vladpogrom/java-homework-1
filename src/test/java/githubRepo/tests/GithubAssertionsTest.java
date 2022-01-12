@@ -1,4 +1,4 @@
-package test.practice.github;
+package githubRepo.tests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;

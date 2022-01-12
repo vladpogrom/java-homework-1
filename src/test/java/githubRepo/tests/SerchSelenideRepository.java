@@ -1,4 +1,4 @@
-package test.practice.github;
+package githubRepo.tests;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,8 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
-public class SearchSelenideRepo {
-
+public class SerchSelenideRepository {
     @Test
     void shouldFindSelenideRepositoryInGithub(){
         // открыть страницу test.practice.github.com

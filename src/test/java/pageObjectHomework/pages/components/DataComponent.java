@@ -9,18 +9,18 @@ import static java.lang.Integer.parseInt;
 
 public class DataComponent {
     // It's okay
-    public static int day;
-    public static int month;
-    public static String year;
+    public int day;
+    public int month;
+    public String year;
     static Random rnd;
     static Date dt;
     static long ms;
     static String pattern;
     static String assertPattern;
-    public static String parseDate;
-    public static String assertDate;
-    public static String[] splitDate;
-    public static String userMonthAssert;
+    public String parseDate;
+    public String assertDate;
+    public String[] splitDate;
+    public String userMonthAssert;
 
     public void dataComponentSet() {
         // Random description
