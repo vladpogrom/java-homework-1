@@ -1,7 +1,7 @@
 package pageObjectHomework.tests;
 
 import pageObjectHomework.pages.components.DataComponent;
-import pageObjectHomework.pages.registration_page.RegistrationPage;
+import pageObjectHomework.pages.registrationPage.RegistrationPage;
 
 public class TestBase {
 

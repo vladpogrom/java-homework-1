@@ -30,24 +30,24 @@ public class HomeworkTestsPageObject extends TestBase {
         });
         step ("Заполняем дату и загружаем картинку", () -> {
             registrationPage.calendarComponent.setDate(data.userDateDay, data.userDateMonth, data.userDateYear);
-            registrationPage.uploadComponent.UploadFile(data.userPicture);
+            registrationPage.uploadFile();
         });
         step ("Заполняем остальные инпуты", () -> {
             registrationPage
-                    .typeMethod(registrationPage.firstNameLocator, data.firstName)
-                    .typeMethod(registrationPage.lastNameLocator, data.lastName)
-                    .typeMethod(registrationPage.userEmailLocator, data.userEmail)
+                    .typeFirstName(data.firstName)
+                    .typeLastName(data.lastName)
+                    .typeUserEmail(data.userEmail)
                     .setGender(data.genderType)
-                    .typeMethod(registrationPage.userNumberLocator, data.userNumber)
-                    .typeMethod(registrationPage.currentAdressLocator, data.userAdress)
-                    .typeStateAndCity(registrationPage.selectStateLocator, data.userState)
-                    .typeStateAndCity(registrationPage.selectCityLocator, data.userCity)
-                    .typeSubjects(registrationPage.subjectsInputLocator, data.subjects)
-                    .typeHobbies(registrationPage.hobbyCheckboxLocator, data.hobbies);
+                    .typeUserPhone(data.userNumber)
+                    .typeCurrentAdress(data.userAdress)
+                    .typeState(data.userState)
+                    .typeCity(data.userCity)
+                    .typeSubjects(data.subjects)
+                    .typeHobbies(data.hobbies);
         });
         step ("Нажимаем сабмит и проверяем что форма проверки открыта", () -> {
             registrationPage.submitClick()
-                    .checkResultValue(registrationPage.submitFormLocator, data.submitFormText);
+                    .checkResultValue(data.submitFormText);
         });
         step ("Делаем ассерты", () -> {
             registrationPage
@@ -56,14 +56,15 @@ public class HomeworkTestsPageObject extends TestBase {
                     .textCheckResultValue(String.join(", ", data.subjects))
                     .textCheckResultValue(String.join(", ", data.hobbies))
                     .textCheckResultValue(data.userNumber)
-                    .textCheckResultValue(data.userPicture.substring(6))
+                    .textCheckResultValue(TestData.userPicture.substring(6))
                     .textCheckResultValue(data.userAdress)
                     .textCheckResultValue(data.userState + " " + data.userCity)
                     .textCheckResultValue(data.genderType)
                     .textCheckResultValue((data.userDateDay) + " " + (data.userDateMonthAssert) + "," + (data.userDateYear));
         });
-        step ("Закрываем страницу", () -> {
-            registrationPage.closeForm();
+        step ("Закрываем страницу и проверяем, что она закрыта", () -> {
+            registrationPage.closeForm()
+                    .isCloseFormClosed();
         });
     }
 
