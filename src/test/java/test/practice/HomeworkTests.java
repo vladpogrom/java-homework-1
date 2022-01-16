@@ -24,7 +24,7 @@ public class HomeworkTests {
         $("#userEmail").setValue("Lebovski@gmail.com");
         $("#gender-radio-3").parent().click(); // кликаем по элементу родителя, интересно
         $("#userNumber").setValue("9887987687");
-        $("#uploadPicture").uploadFromClasspath("img/test_file.png"); // самый правильный метод для загрузки файлов
+        $("#uploadPicture").uploadFromClasspath("files/pngTest.png"); // самый правильный метод для загрузки файлов
         $("#currentAddress").setValue("Adress Big");
         $("#react-select-3-input").setValue("Har").pressEnter();
         $("#react-select-4-input").setValue("Kar").pressEnter();
@@ -53,7 +53,7 @@ public class HomeworkTests {
                 text("9887987687"),
                 text("21 April,1996"),
                 text("Sports, Reading, Music"),
-                text("test_file.png"),
+                text("pngTest.png"),
                 text("Adress Big"),
                 text("Haryana Karnal"));
 

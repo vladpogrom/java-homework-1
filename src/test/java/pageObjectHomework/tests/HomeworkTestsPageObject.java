@@ -56,7 +56,7 @@ public class HomeworkTestsPageObject extends TestBase {
                     .textCheckResultValue(String.join(", ", data.subjects))
                     .textCheckResultValue(String.join(", ", data.hobbies))
                     .textCheckResultValue(data.userNumber)
-                    .textCheckResultValue(data.userPicture.substring(4))
+                    .textCheckResultValue(data.userPicture.substring(6))
                     .textCheckResultValue(data.userAdress)
                     .textCheckResultValue(data.userState + " " + data.userCity)
                     .textCheckResultValue(data.genderType)
