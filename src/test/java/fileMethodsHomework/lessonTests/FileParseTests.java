@@ -34,8 +34,7 @@ public class FileParseTests {
     void parseXlsTest() throws Exception {
         try (InputStream xlsStream = cl.getResourceAsStream("files/xlsxTest.xlsx")) {
             XLS parsedFile = new XLS(xlsStream);
-            assertThat(parsedFile.excel.getSheetAt(0).getRow(1).getCell(2).getStringCellValue())
-                    .isEqualTo("Abril");
+            assertThat(parsedFile.excel.getSheetAt(0).getRow(1).getCell(2).getStringCellValue()).isEqualTo("Abril");
         }
     }
 
@@ -44,19 +43,12 @@ public class FileParseTests {
         try (InputStream csvStream = cl.getResourceAsStream("files/csvTest.csv")) {
             CSVReader reader = new CSVReader(new InputStreamReader(csvStream));
             List<String[]> list = reader.readAll();
-            assertThat(list)
-                    .hasSize(3)
-                    .contains(
-                            new String[]{"Author", "Book"},
-                            new String[]{"Block", "Apteka"},
-                            new String[]{"Esenin", "Cherniy Chelovek"}
-                    );
+            assertThat(list).hasSize(3).contains(new String[]{"Author", " Book"}, new String[]{"Block", " Apteka"}, new String[]{"Esenin", " Cherniy Chelovek"});
         }
     }
 
     @Test
     void zipTest() throws Exception {
-        //sample-zip-file.zip
 
         try (InputStream stream = cl.getResourceAsStream("files/zipTest.zip");
              ZipInputStream zipStream = new ZipInputStream(stream)) {
