@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ZipFileHomework {
     @Test
-    @DisplayName("Тест на проверку df, csv, xlsx")
+    @DisplayName("Тест на проверку pdf, csv, xlsx")
     void zipTestForAll() throws Exception {
 
         try (ZipFile testZipFile = new ZipFile("src\\test\\resources\\files\\testFilesZip.zip")) {
