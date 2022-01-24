@@ -15,8 +15,9 @@ import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Selectors.byText;
 
+@Owner("vladpogrom")
 @DisplayName("Тесты на авито")
-public class parametriseTest {
+public class ParametriseTest {
 
     public static String URL = "https://www.avito.ru/";
 
@@ -30,7 +31,6 @@ public class parametriseTest {
 
     @ValueSource(strings = {"Екатеринбург", "Москва", "Челябинск"})
     @ParameterizedTest(name = "ValueSource тесты на смену города: {0}")
-    @Owner("vladpogrom")
     void avitoTestChangeCity(String testData) {
         Selenide.open(URL);
         Selenide.$("[data-marker='search-form/region']").click();
@@ -46,7 +46,6 @@ public class parametriseTest {
             "Москва, Москва",
             "Челябинск, Челябинская область"})
     @ParameterizedTest(name = "CsvSource есты на смену города: {0}")
-    @Owner("vladpogrom")
     void avitoTestChangeCityWithCsv(String testData, String testResult) {
         Selenide.open(URL);
         Selenide.$("[data-marker='search-form/region']").click();
@@ -72,7 +71,6 @@ public class parametriseTest {
     @Disabled
     @ValueSource(strings = {"Екатеринбург", "Москва", "Челябинск"})
     @ParameterizedTest
-    @Owner("vladpogrom")
     @DisplayName("Тесты на смену города на странице")
     void avitoTest() {
         Selenide.open(URL);
