@@ -29,7 +29,7 @@ public class HomeworkTestsPageObject extends TestBase {
             registrationPage.openForm();
         });
         step ("Заполняем дату и загружаем картинку", () -> {
-            registrationPage.calendarComponent.setDate(data.userDateDay, data.userDateMonth, data.userDateYear);
+            registrationPage.calendarComponent.setDate(TestData.userDateDay, TestData.userDateMonth, TestData.userDateYear);
             registrationPage.uploadFile();
         });
         step ("Заполняем остальные инпуты", () -> {
@@ -60,7 +60,7 @@ public class HomeworkTestsPageObject extends TestBase {
                     .textCheckResultValue(data.userAdress)
                     .textCheckResultValue(data.userState + " " + data.userCity)
                     .textCheckResultValue(data.genderType)
-                    .textCheckResultValue((data.userDateDay) + " " + (data.userDateMonthAssert) + "," + (data.userDateYear));
+                    .textCheckResultValue((TestData.userDateDay) + " " + (TestData.userDateMonthAssert) + "," + (TestData.userDateYear));
         });
         step ("Закрываем страницу и проверяем, что она закрыта", () -> {
             registrationPage.closeForm()

@@ -15,10 +15,10 @@ public class TestData {
     public String userCity = "Karnal";
     public String userState = "Haryana";
     public static String userPicture = "files/pngTest.png";
-    public int userDateDay = dataComponent.day;
-    public int userDateMonth = dataComponent.month;
-    public String userDateYear = dataComponent.year;
-    public String userDateMonthAssert = dataComponent.userMonthAssert;
+    static int userDateDay = dataComponent.day;
+    static int userDateMonth = dataComponent.month;
+    static String userDateYear = dataComponent.year;
+    static String userDateMonthAssert = dataComponent.userMonthAssert;
     public String submitFormText = "Thanks for submitting the form";
     public String[] subjects = {"Chemistry", "Arts", "English", "Commerce"},
             hobbies = {"Sports", "Reading", "Music"};

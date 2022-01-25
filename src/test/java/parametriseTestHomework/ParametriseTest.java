@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -31,6 +32,7 @@ public class ParametriseTest {
 
     @ValueSource(strings = {"Екатеринбург", "Москва", "Челябинск"})
     @ParameterizedTest(name = "ValueSource тесты на смену города: {0}")
+    @Test
     void avitoTestChangeCity(String testData) {
         Selenide.open(URL);
         Selenide.$("[data-marker='search-form/region']").click();
