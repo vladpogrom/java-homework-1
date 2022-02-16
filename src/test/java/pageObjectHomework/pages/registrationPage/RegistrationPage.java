@@ -38,19 +38,19 @@ public class RegistrationPage {
     private final SelenideElement selectCityLocator = $("#react-select-4-input");
     private final SelenideElement uploadPictureLocator = $("#uploadPicture");
 
-    @Step("Открыть страницу {URL}")
+    @Step("Открыть банку с огурцами {URL}")
     public RegistrationPage openForm() {
         open(URL);
         return this;
     }
 
-    @Step("Проверить, что страница открыта")
+    @Step("Проверить, что банка открыта")
     public RegistrationPage checkResultValue(String value) {
         submitFormLocator.shouldHave(text(value));
         return this;
     }
 
-    @Step("Проверка наличия текста {value} на форме проверки")
+    @Step("Проверка наличия огурцов {value} на форме проверки")
     public RegistrationPage textCheckResultValue(String value) {
         resultTableElementLocator.shouldHave(text(value));
         return this;
