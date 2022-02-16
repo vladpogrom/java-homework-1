@@ -38,7 +38,7 @@ public class RegistrationPage {
     private final SelenideElement selectCityLocator = $("#react-select-4-input");
     private final SelenideElement uploadPictureLocator = $("#uploadPicture");
 
-    @Step("Открыть банку с огурцами {URL}")
+    @Step("Открыть банку с грибами {URL}")
     public RegistrationPage openForm() {
         open(URL);
         return this;
@@ -50,20 +50,20 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Проверка наличия огурцов {value} на форме проверки")
+    @Step("Проверка наличия мухоморов {value} в банке")
     public RegistrationPage textCheckResultValue(String value) {
         resultTableElementLocator.shouldHave(text(value));
         return this;
     }
 
-    @Step("Заполнить инпут значением {value}")
+    @Step("Заполнить желудок грибами {value}")
     public RegistrationPage typeFirstName(String value) {
         firstNameLocator.setValue(value);
         return this;
     }
 
 
-    @Step("Заполнить инпут значением {value}")
+    @Step("Заполнить желудок чаем с вареньем {value}")
     public RegistrationPage typeLastName(String value) {
         lastNameLocator.setValue(value);
         return this;
